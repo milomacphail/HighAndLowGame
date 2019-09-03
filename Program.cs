@@ -28,9 +28,6 @@ namespace HighOrLow
         {
             this.CardValue = CardValue;
         }
-
-
-
     }
 
     public class Game
@@ -50,8 +47,8 @@ namespace HighOrLow
             }
             else
             {
-                Console.WriteLine("{0} {1}", startingCard.CardValue, startingCard.CardSuit);
-                Console.WriteLine("Guess high or low: ");
+                Console.WriteLine("Drawn Card: {0} {1}", startingCard.CardValue, startingCard.CardSuit);
+                Console.WriteLine("Guess higher or lower: ");
                 string input = Console.ReadLine();
                 if (input.ToLower() != "high" && input.ToLower() != "low")
                 {
@@ -59,12 +56,13 @@ namespace HighOrLow
                 }
                 else if (nextCard.CardValue > startingCard.CardValue && input.ToLower() == "high" || nextCard.CardValue < startingCard.CardValue && input.ToLower() == "low")
                 {
-                    Console.WriteLine("{0} {1}", nextCard.CardValue, nextCard.CardSuit);
+                    Console.WriteLine("Card Drawn: {0} {1}", nextCard.CardValue, nextCard.CardSuit);
                     Console.WriteLine("Nice guess! You win!");
                     correctGuesses++;
                     Console.WriteLine("Streak: {0}", correctGuesses);
                     nextCard = startingCard;
                     nextCard = new Card();
+                    PlayGame();
 
                 }
                 else if (nextCard.CardValue < startingCard.CardValue && input.ToLower() == "high" || nextCard.CardValue > startingCard.CardValue && input.ToLower() == "low")
@@ -72,36 +70,10 @@ namespace HighOrLow
                     Console.WriteLine("{0} {1}", nextCard.CardValue, nextCard.CardSuit);
                     Console.WriteLine("Ooooooh! Better luck next time! You lose.");
                     correctGuesses = 0;
+                    Console.WriteLine("New game?);
                 }
             }
-
-
-            /*if (playedCard == drawnCard)
-            {
-                Console.WriteLine("Cards cannot match!");
-                drawnCard = card.drawCard();
-            }
-            else
-            {
-                Console.WriteLine("Game works kinda!");
-            }
-            //string drawnCardValue = drawnCard.Substring(0, 1);
-            //tring playedCardValue = playedCard.Substring(0, 1);*/
-
         }
-
-        /*public class Guess
-        {
-            public void gameMove(string input)
-            {
-                if (input.ToLower != "high" || "low")
-                {
-                    Console.WriteLine("Please enter 'high' or 'low'.");
-                }
-            }
-        }*/
-
-        // }
 
         class Program
         {
